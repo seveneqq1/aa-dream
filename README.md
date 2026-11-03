@@ -31,8 +31,23 @@ npm run dev
 
 Настоящие телефон, адрес, почта, сроки изготовления и логистика не были предоставлены. Они не выдуманы; контактный раздел направляет к сохранению заявки. Автоматическая отправка заявок в CRM, email или мессенджеры не подключена. Сохранённые заявки доступны владельцу в базе сайта через настройки Sites. До коммерческого запуска нужно заменить концептуальные модели и цены реальным ассортиментом, добавить контакты, политику обработки данных и процесс обработки заявок.
 
-Дизайны хранятся на устройстве; заявки — в базе сайта. Оплата не подключена. Публикация исходно приватная, доступна владельцу.
+Дизайны хранятся на устройстве; заявки — в базе сайта. Оплата не подключена. Исходный репозиторий приватный. Развёртывание в собственном аккаунте Cloudflare публикует сайт на workers.dev.
 
 ## Изображение
 
 `public/assets/hero.jpg` создано встроенным image_gen; оригинальный запрос сохранён в `ASSET_PROMPT.md`. Модели конструктора написаны на Three.js и не используют внешние GLB-файлы.
+
+## Cloudflare hosting
+
+This repository is configured for a standalone Cloudflare Worker with static assets and a D1 database. There is no ChatGPT sign-in requirement on the standalone deployment. The original Sites deployment is independent.
+
+1. Install: `npm ci` (Node.js 22.13 or later).
+2. Authenticate: `npx wrangler login`.
+3. Create the order database once: `npx wrangler d1 create aa-dream-orders`.
+4. Set its returned `database_id` in `wrangler.cloudflare.json`. Account and database IDs are configuration values, not credentials. Never commit API tokens.
+5. Check: `npm run check`.
+6. Build, apply any pending database migrations, and publish: `npm run deploy:cloudflare`.
+
+For Cloudflare Workers Builds connected to this private GitHub repository, use build command `npm run build` and deploy command `node scripts/deploy-cloudflare.mjs`, with the repository root as the root directory. The deploy script applies pending schema migrations before updating the Worker.
+
+The GitHub source is private; website visitors can access the public storefront and submit an order. No endpoint lists stored names or phone numbers. Orders are available to the account owner in the Cloudflare D1 console.
