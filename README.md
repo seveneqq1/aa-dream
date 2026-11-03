@@ -1,5 +1,9 @@
 # AA DREAM
 
+Live website: https://aa-dream.cgbdrgsn7j.workers.dev
+
+Private source: https://github.com/seveneqq1/aa-dream
+
 Сайт индивидуальной мебели на React 19, TypeScript, Tailwind CSS 4, Three.js / React Three Fiber. Vinext и Cloudflare Workers обслуживают страницу и API, Cloudflare D1 хранит заявки.
 
 ## Работа сайта
