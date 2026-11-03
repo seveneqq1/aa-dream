@@ -3,16 +3,36 @@
   "name": "aa-dream",
   "main": "dist/server/index.js",
   "compatibility_date": "2026-05-15",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "no_bundle": true,
-  "rules": [{ "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }],
-  "assets": { "directory": "dist/client", "run_worker_first": ["/api/*"] },
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "aa-dream-orders",
-    "database_id": "00000000-0000-4000-8000-000000000000",
-    "migrations_dir": "drizzle"
-  }],
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": [
+        "**/*.js",
+        "**/*.mjs"
+      ]
+    }
+  ],
+  "assets": {
+    "directory": "dist/client",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aa-dream-orders",
+      "database_id": "a8cd1099-a52a-4191-93cb-53cee0006a9f",
+      "migrations_dir": "drizzle"
+    }
+  ],
   "workers_dev": true,
-  "observability": { "enabled": true }
+  "observability": {
+    "enabled": true
+  },
+  "account_id": "806f7e7c3959cd8bb926a5760f4e2ee5"
 }
